@@ -19,7 +19,7 @@ class Pengguna():
 	def selectDB(self, username):
 		self.username = username
 		self.openDB()
-		cursor.execute("SELECT * FROM pengguna where username='%s'" % self.username)
+		cursor.execute("SELECT * FROM pengguna where userName='%s'" % self.username)
 		container = cursor.fetchall()
 		self.closeDB
 		return container
@@ -30,7 +30,7 @@ class Pengguna():
 		
 	def authenticate(self):
 		self.openDB()
-		cursor.execute("SELECT COUNT(*) FROM pengguna WHERE username = '%s' AND password = MD5('%s')" % (self.username, self.password))
+		cursor.execute("SELECT COUNT(*) FROM user WHERE userName = '%s' AND password = MD5('%s')" % (self.username, self.password))
 		count_account = (cursor.fetchone())[0]
 		self.closeDB()
 		return True if count_account > 0 else False

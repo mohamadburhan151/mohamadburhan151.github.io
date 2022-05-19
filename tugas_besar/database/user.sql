@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Bulan Mei 2022 pada 07.25
+-- Waktu pembuatan: 19 Bulan Mei 2022 pada 09.39
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -31,8 +31,16 @@ CREATE TABLE `user` (
   `idUser` int(255) NOT NULL,
   `namaUser` varchar(45) NOT NULL,
   `userName` varchar(20) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`idUser`, `namaUser`, `userName`, `password`, `keterangan`) VALUES
+(1, 'Mohamad Burhanudin', 'burhan', '6bec9c852847242e384a4d5ac0962ba0', 'udin');
 
 --
 -- Indexes for dumped tables
@@ -52,7 +60,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUser` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
