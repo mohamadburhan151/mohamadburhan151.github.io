@@ -11,19 +11,22 @@
 			<p style="color:red;">{{ msg }}</p>
 		{% endif %}
 		<form action="{{ url_for('login') }}" method="post">
+			Nama lengkap : <br />
+			<input type="text" name="nama" id="" value="" /><br />
+      
 			Username : <br />
 			<input type="text" name="username" id="" value="" /><br />
-			
+
 			Password : <br />
 			<input type="password" name="password" id="" value="" /><br />
 
 			<input type="hidden" name="level">
 			
 			<p>
-			<button type="submit">Login</button>
+			<button type="submit">Daftar</button>
 			</p>
 			<p>
-				Belum punya akun?. silahkan daftar dulu <a href="{{ url_for('signUp') }}">Sign Up</a>
+				Sudah punya akun?. silahkan <a href="{{ url_for('login') }}">Login</a>
 			</p>
 		</form>
 	</body>

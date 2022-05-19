@@ -4,7 +4,8 @@ import config
 db = cursor = None
 
 class Pengguna():
-	def __init__ (self, username=None, password=None):
+	def __init__ (self, nama = None, username=None, password=None):
+		self.nama = nama
 		self.username = username
 		self.password = password
 		
@@ -24,6 +25,16 @@ class Pengguna():
 		self.closeDB
 		return container
 
+	def insertDB(self, nama, username, password):
+		self.nama = nama
+		self.username = username
+		self.password = password
+		data = [nama, username, password]
+		self.openDB()
+		insert = cursor.execute("INSERT INTO user(namaUser, userName, password) VALUES ('%s', '%s', '%s')" % data)
+		self.closeDB
+		return insert
+
 	def closeDB(self):
 		global db, cursor
 		db.close()
@@ -33,9 +44,7 @@ class Pengguna():
 		cursor.execute("SELECT COUNT(*) FROM user WHERE userName = '%s' AND password = MD5('%s')" % (self.username, self.password))
 		count_account = (cursor.fetchone())[0]
 		self.closeDB()
-		return True if count_account > 0 else False
-			
-			
+		return True if count_account > 0 else False	
 			
 			
 			

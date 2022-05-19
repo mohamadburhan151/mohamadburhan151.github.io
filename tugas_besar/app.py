@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, session, \
 	request, redirect, url_for
 from models import Pengguna
@@ -22,7 +23,7 @@ def login():
 	if request.method == 'POST':
 		username = request.form['username']
 		password = request.form['password']
-		pengguna = Pengguna(username, password)
+		pengguna = Pengguna('',username, password)
 		if pengguna.authenticate():
 			session['username'] = username
 			session['password'] = password
@@ -30,6 +31,16 @@ def login():
 		msg = 'Username / Password salah.'
 		return render_template('form.html', msg=msg)
 	return render_template('form.html')
+
+@app.route('/signUp', methods=['GET', 'POST'])
+def signUp():
+	if request.method == 'POST':
+    nama = request.form['nama']
+    username = request.form['username']
+    password = request.form['password']
+    pengguna = Pengguna(nama, username, password)
+    pengguna.insertDB()
+    return True
 
 @app.route('/logout')
 def logout():
