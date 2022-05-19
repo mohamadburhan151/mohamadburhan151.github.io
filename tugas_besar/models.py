@@ -1,4 +1,3 @@
-import dataclasses
 import pymysql
 import config
 

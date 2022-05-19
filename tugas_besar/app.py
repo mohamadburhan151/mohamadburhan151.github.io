@@ -16,7 +16,7 @@ def index():
 		return render_template('index.html',
 			tabel=tabel, username=username
 		)
-	return redirect(url_for('login'))
+	return render_template('landingPage.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -39,6 +39,7 @@ def signUp():
     nama = request.form['nama']
     username = request.form['username']
     password = request.form['password']
+    data = (nama, username, password)
     pengguna = Pengguna(nama, username, password)
     pengguna.insertDB(nama, username, password)
     return redirect(url_for('login'))
