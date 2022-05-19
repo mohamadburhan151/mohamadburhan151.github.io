@@ -6,11 +6,11 @@
 		
 	</head>
 	<body>
-		<h2>TUGAS 3 PAWL</h2>
+		<h2>Form Pendaftaran</h2>
 		{% if msg %}
 			<p style="color:red;">{{ msg }}</p>
 		{% endif %}
-		<form action="{{ url_for('login') }}" method="post">
+		<form action="{{ url_for('signUp') }}" method="post">
 			Nama lengkap : <br />
 			<input type="text" name="nama" id="" value="" /><br />
       
@@ -20,7 +20,7 @@
 			Password : <br />
 			<input type="password" name="password" id="" value="" /><br />
 
-			<input type="hidden" name="level">
+			<input type="hidden" name="keterangan" value="user">
 			
 			<p>
 			<button type="submit">Daftar</button>

@@ -1,3 +1,4 @@
+import dataclasses
 import pymysql
 import config
 
@@ -25,20 +26,19 @@ class Pengguna():
 		self.closeDB
 		return container
 
-	def insertDB(self, nama, username, password):
+	def insertDB(self,nama, username, password):
 		self.nama = nama
 		self.username = username
 		self.password = password
-		data = [nama, username, password]
 		self.openDB()
-		insert = cursor.execute("INSERT INTO user(namaUser, userName, password) VALUES ('%s', '%s', '%s')" % data)
-		self.closeDB
-		return insert
+		cursor.execute("INSERT INTO user(namaUser, userName, password) VALUES('%s','%s',MD5('%s'))" % (self.nama, self.username, self.password))
+		db.commit()
+		self.closeDB()
 
 	def closeDB(self):
 		global db, cursor
 		db.close()
-		
+
 	def authenticate(self):
 		self.openDB()
 		cursor.execute("SELECT COUNT(*) FROM user WHERE userName = '%s' AND password = MD5('%s')" % (self.username, self.password))
