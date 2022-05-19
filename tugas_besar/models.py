@@ -19,7 +19,7 @@ class Pengguna():
 	def selectDB(self, username):
 		self.username = username
 		self.openDB()
-		cursor.execute("SELECT * FROM pengguna where userName='%s'" % self.username)
+		cursor.execute("SELECT * FROM user where userName='%s'" % self.username)
 		container = cursor.fetchall()
 		self.closeDB
 		return container
