@@ -1,17 +1,177 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>TUGAS 3 PAWL</title>
-		
-	</head>
-	<body>
-		<h2>TUGAS 3 PAWL</h2>
+{% extends "base/base.html" %}
+	{% block body %}
+		<!-- <h2>TUGAS 3 PAWL</h2>
 		<p>Selamat Datang <b>{{ username }}</b>.</p>
 		{% for kolom in tabel %}
-		Level : <b>{{ kolom[4]}}</b>.
+		Level : <b>{{ kolom[5]}}</b>.
 		{% endfor %}
 		<P></P>
-		<a href="{{ url_for('logout') }}">Logout</a>
-	</body>
-</html>
+		<a href="{{ url_for('logout') }}">Logout</a>  -->
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-1">
+					<!--  -->
+				</div>
+				<!-- content -->
+				<div class="col-md-10">
+					<!-- nav head -->
+					<nav class="navbar bg-gradient shadow p-3 mb-5 bg-dark rounded">
+						<div class="container-fluid bg-transparent">
+							<a class="navbar-brand active href="#">
+								<img src="{{url_for('static', filename='lib/img/favicon.png')}}" alt="" width="30" height="24" class="d-inline-block align-text-center">
+								Mohamad Burhanudin
+							</a>
+							<ul class="nav nav-tabs">
+								<li class="nav-item">
+									<a id="home" class="nav-link active" aria-current="page" href="#">Home</a>
+								</li>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Tentang</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#">About</a></li>
+										<li><a class="dropdown-item" href="#">Contact</a></li>
+										<li><a class="dropdown-item" href="#">Galery</a></li>
+									</ul>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">About Me</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+					<!-- end nav head -->
+					<!-- isi content -->
+					
+					<div class="container-fluid mt-4">
+						<div class="row col-md-12 ">
+							<div class="col ">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href="{{ url_for('varData') }}"><h5 class="card-title">Variable dan Tipe Data</h5></a>
+										<p class="card-text">variabel dan tipe data pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col mb-4">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href="https://www.petanikode.com/python-input-output/"><h5 class="card-title">Input dan Output di Python</h5></a>
+										<p class="card-text">Cara Mengambil Input dan Menampilkan Output pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href="https://www.petanikode.com/python-operator/"><h5 class="card-title">Operator di Python</h5></a>
+										<p class="card-text">Mempelajari Operator pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href=""><h5 class="card-title">Percabangan di Python</h5></a>
+										<p class="card-text">Mempelajari Percabangan pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href=""><h5 class="card-title">Perulangan di Python</h5></a>
+										<p class="card-text">Mempelajari Perulangan pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href=""><h5 class="card-title">Struktur List di Python</h5></a>
+										<p class="card-text">Mempelajari Struktur List pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href=""><h5 class="card-title">Struktur Tuple di Python</h5></a>
+										<p class="card-text">Mempelajari Struktur Tuple pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href=""><h5 class="card-title">Struktur Dictionary di Python</h5></a>
+										<p class="card-text">Mempelajari Struktur Dictionary pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href=""><h5 class="card-title">Fungsi di Python</h5></a>
+										<p class="card-text">Mempelajari Fungsi pada Python</p>
+									</div>
+								</div>
+							</div>
+							<div class="col">
+								<div class="card shadow p-3" style="width: 16rem;">
+									<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href=""><h5 class="card-title">Perulangan di Python</h5></a>
+										<p class="card-text">Mempelajari Perulangan pada Python</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid mt-4 ">
+					<div class="row d-flex justify-content-center">
+						<div class="col-md-10">
+							<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active" data-bs-interval="3000">
+										<img src="{{url_for('static', filename='lib/img/favicon.png')}}" class=" rounded mx-auto d-block w-70" alt="...">
+									</div>
+									<div class="carousel-item" data-bs-interval="3000">
+										<img src="{{url_for('static', filename='lib/img/favicon.png')}}" class="rounded mx-auto d-block w-70" alt="...">
+									</div>
+									<div class="carousel-item" data-bs-interval="3000">
+										<img src="{{url_for('static', filename='lib/img/favicon.png')}}" class="rounded mx-auto d-block w-70" alt="...">
+									</div>
+								</div>
+								<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end isi content -->
+				<!-- end content -->
+				<div class="col-md-1">
+					<!--  -->
+				</div>	
+					
+			</div>
+		</div>
+
+		{% endblock %}

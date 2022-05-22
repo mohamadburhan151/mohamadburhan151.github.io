@@ -1,10 +1,12 @@
+from ast import dump
+from hashlib import md5
 import pymysql
 import config
 
 db = cursor = None
 
 class Pengguna():
-	def __init__ (self, nama = None, username=None, password=None):
+	def __init__ (self, nama=None, username=None, password=None):
 		self.nama = nama
 		self.username = username
 		self.password = password
@@ -17,20 +19,19 @@ class Pengguna():
 			password = config.DB_PASSWORD,
 			database = config.DB_NAME)
 		cursor = db.cursor()
-	def selectDB(self, username):
+	def selectDB(self, username, password):
 		self.username = username
+		self.password = password
 		self.openDB()
-		cursor.execute("SELECT * FROM user where userName='%s'" % self.username)
+		cursor.execute("SELECT * FROM user where userName='%s' AND password=MD5('%s')" % (self.username, self.password))
 		container = cursor.fetchall()
 		self.closeDB
 		return container
 
-	def insertDB(self,nama, username, password):
-		self.nama = nama
-		self.username = username
-		self.password = password
+	def insertDB(self):
+		level = "user"
 		self.openDB()
-		cursor.execute("INSERT INTO user(namaUser, userName, password) VALUES('%s','%s',MD5('%s'))" % (self.nama, self.username, self.password))
+		cursor.execute("INSERT INTO user(namaUser, userName, password, keterangan, level) VALUES('%s' , '%s' , MD5('%s') , '%s' , '%s')"  % (self.nama, self.username, self.password, self.password, level))
 		db.commit()
 		self.closeDB()
 
