@@ -17,9 +17,13 @@ def index():
 		model = Pengguna()
 		tabel = []
 		tabel = model.selectDB(username, password)
-		return render_template('index.html',
-			tabel=tabel, username=username, title="Index"
-		)
+		for kolom in tabel:
+			if kolom[5] == 'user':
+				return render_template('index.html', tabel=tabel, username=username, title="Index"
+			)
+			elif kolom[5] == 'admin':
+				return render_template('index.admin.html', tabel=tabel, username=username, title="Index Admin"
+			)
 	return render_template('landingPage.html', title="Landing Page")
 
 
