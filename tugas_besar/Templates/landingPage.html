@@ -1,11 +1,11 @@
 {% extends "base/base.html" %}
   {% block body %}
-  <style>
+  <!-- <style>
     #galery {
       margin-top: 20%;
       margin-bottom: 15%;
     }
-  </style>
+  </style> -->
 
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
     <div class="container-fluid">
@@ -36,28 +36,7 @@
         <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
-
-          <div class="carousel-item active" style="background-image: url({{url_for('static', filename='lib/img/sishui.jpg')}})">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Uchiha Shisui</h2>
-                <p class="animate__animated animate__fadeInUp">Tolong lindungi desa ini, dan kehormatan Klan Uchiha. Jika aku mati, mungkin keadaan akan berubah. Aku sudah meninggalkan catatan milikku. Jangan coba hentikan ku Itachi, kau adalah teman terbaikku.</p>
-                <a href="{{url_for('login')}}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url({{url_for('static', filename='lib/img/naruto.jpg')}})">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Uzumaki Naruto</h2>
-                <p class="animate__animated animate__fadeInUp">Aku tidak suka dengan orang yang membohongi dirinya sendiri ditengah turunnya salju.</p>
-                <a href="{{url_for('login')}}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item" style="background-image: url({{url_for('static', filename='lib/img/itachi.jpg')}})">
+          <div class="carousel-item active" style="background-image: url(/static/lib/img/itachi.jpg)">
             <div class="carousel-container">
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown">Uchiha Itachi</h2>
@@ -66,43 +45,32 @@
               </div>
             </div>
           </div>
-
-          <div class="carousel-item" style="background-image: url({{url_for('static', filename='lib/img/madara.jpg')}})">
+          {%for gbr in gmbrs%}
+          <div class="carousel-item" style="background-image: url(/static/uploads/{{gbr[3]}})">
             <div class="carousel-container">
               <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Uchiha Madara</h2>
-                <p class="animate__animated animate__fadeInUp">Semakin lama kamu hidup. Semakin kamu menyadari bahwa kenyataan hanya terbuat dari rasa sakit, penderitaan dan kekosongan.</p>
+                <h2 class="animate__animated animate__fadeInDown">{{gbr[1]}}</h2>
+                <p class="animate__animated animate__fadeInUp">{{gbr[2]}}</p>
                 <a href="{{url_for('login')}}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
               </div>
             </div>
           </div>
-
-          <div class="carousel-item" style="background-image: url({{url_for('static', filename='lib/img/sasuke.jpg')}})">
-            <div class="carousel-container">
-              <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Uchiha Sasuke</h2>
-                <p class="animate__animated animate__fadeInUp">Seorang ninja menunggu sampai waktunya tepat. Ketika musuh tidur dan menurunkan pertahanan. Ketika senjata tergeletak terlupakan di keheningan malam. Itulah saat untuk seorang ninja untuk menyerang.</p>
-                <a href="{{url_for('login')}}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
-              </div>
-            </div>
-          </div>
-
+          {%endfor%}
         </div>
 
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <!-- <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
         </a>
 
         <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
           <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
+        </a> -->
 
       </div>
     </div>
-  </section><!-- End Hero Section -->
 
     <!-- End About Us Section -->
-    <section id="galery">
+    <!-- <section id="galery">
       <div class="container" data-aos="zoom-in">
         <header class="section-header">
           <h3>Galery</h3>
@@ -136,7 +104,7 @@
         </div>
       
       </div>
-    </section>
+    </section> -->
     
     <script src="{{url_for('static', filename='lib/bootstrapv5/js/purecounter.js')}}" type="text/javascript"></script>
     <script src="{{url_for('static', filename='lib/bootstrapv5/js/aos.js')}}" type="text/javascript"></script>
