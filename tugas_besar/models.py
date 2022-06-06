@@ -106,4 +106,9 @@ class Database():
 			cursor.execute("INSERT INTO landingPage(judul, deskripsi, gambar) VALUES('%s' , '%s', '%s')"  % (self.data['judul'], self.data['deskripsi'], self.data['gambar']))
 			db.commit()
 			self.closeDB()
+		if self.data['aksi'] == 'edit':
+			self.openDB()
+			cursor.execute("UPDATE landingPage SET judul='%s', deskripsi='%s', gambar='%s' WHERE idUser=%d"  % (self.data['nama'], self.data['username'], self.data['password'], self.data['password'], self.data['level'], self.data['id']))
+			db.commit()
+			self.closeDB()
 
