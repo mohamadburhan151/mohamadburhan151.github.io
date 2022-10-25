@@ -1,0 +1,191 @@
+{% extends "base/base.html" %}
+	{% block body %}
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-1">
+					<!--  -->
+				</div>
+				<!-- content -->
+				<div class="col-md-10">
+					<!-- nav head -->
+					<nav class="navbar bg-gradient shadow p-3 mb-5 bg-dark rounded">
+						<div class="container-fluid bg-transparent">
+							<a class="navbar-brand active" href="#">
+								<img src="{{url_for('static', filename='lib/img/favicon.png')}}" alt="" width="30" height="24" class="d-inline-block align-text-center">
+								Selamat Datang {{username}}
+							</a>
+							<ul class="nav nav-tabs">
+								<li class="nav-item">
+									<a id="home" class="nav-link" aria-current="page" href="{{ url_for('index') }}">Home</a>
+								</li>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Tentang</a>
+									<ul class="dropdown-menu">
+										<li><button class="dropdown-item" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#About"><a>About</a></button></li>
+										<li><button class="dropdown-item" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#Contact"><a>Contact</a></button></li>
+										<li><a class="dropdown-item" href="#">&emsp; Galery</a></li>
+									</ul>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ url_for('index') }}">Materi</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" onclick="return confirm('Apakah Anda Yakin Keluar?')" href="{{ url_for('logout') }}">Logout</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+					<!-- end nav head -->
+				<!-- modal About -->
+				<div class="modal fade" id="About" tabindex="-1" aria-labelledby="AboutLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content text-light bg-secondary">
+							<div class="modal-header">
+								<h5 class="modal-title" id="AboutLabel">About</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-lg-4">
+										<img src="https://avatars.githubusercontent.com/u/73084755?v=4" class="rounded card-img-top" alt="...">
+									</div>
+									<div class="col-lg-8">
+										<a href="">
+											<i class="bi bi-arrow-right-square-fill"></i>
+											<strong>Nama: </strong>
+											<span>Mohamad Burhanudin</span><br>
+										</a>
+										<a href="">
+											<i class="bi bi-arrow-right-square-fill"></i>
+											<strong>NIM: </strong>
+											<span>202103034</span><br>
+										</a><br>
+										<strong>Tujuan </strong><span>dari pembuatan website ini adalah untuk memenuhi <strong>Tugas Akhir PAWL</strong> yang diampu oleh <strong>Pak Kharisma S.T., M.Cs.</strong></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- modal About -->
+				<!-- modal contact -->
+				<div class="modal fade" id="Contact" tabindex="-1" aria-labelledby="ContactLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content bg-secondary text-light">
+							<div class="modal-header bg-success text-light">
+								<h5 class="modal-title" id="ContactLabel">Contact Me</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<div class="col-lg-4">
+										<img src="https://avatars.githubusercontent.com/u/73084755?v=4" class="rounded-circle card-img-top" alt="...">
+									</div>
+									<div class="col-lg-8">
+										<a href="">
+											<i class="bi bi-whatsapp"></i>
+											<strong><a href="https://wa.me/6285287487322">085287487322</a></strong>
+										</a><br>
+										<a href="">
+											<i class="bi bi-github"></i>
+											<strong><a href="https://github.com/mohamadburhan151">mohamadburhan151</a></strong>
+										</a><br>
+										<a href="">
+											<i class="bi bi-instagram"></i>
+											<strong><a href="https://www.instagram.com/_mohamad_burhanudin_/">_mohamad_burhanudin_</a></strong>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+					<!-- isi content -->
+				<div class="container-fluid mt-4 ">
+					<div class="row d-flex justify-content-center">
+						<div class="col-md-10">
+							<div class="card shadow p-3 text-dark text-light text-center mb-5">
+								<img src="https://algorit.ma/wp-content/uploads/2022/02/Python-Logo-1030x644.png" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href=""><h1 class="card-title">Mempelajari {{title}}</h1></a>
+									<p class="card-text">
+										<h3>Pengetian {{ title }}</h3>
+										<p class="text-start">
+											Variabel merupakan tempat menyimpan data, sedangkan tipe data adalah jenis data yang terseimpan dalam variabel.
+											<br> bersifat mutable, artinya nilainya bisa berubah-ubah
+										</p>
+										<h3>Membuat Variabel di Python</h3>
+										<p class="text-start">
+											Variabel di python dapat dibuat dengan format seperti ini:
+											<br>
+											<div class="badge bg-dark">
+												<h6>variabel = nilai</h6>
+											</div>
+											<p class="text-start">
+												Contoh :
+											</p>
+											<p></p>
+											<div class="badge bg-dark">
+												<h6>variabel_ku = "ini isi variabel"<br>
+													variabel2 = 20</h6>
+											</div>
+											<p></p>
+											<p class="text-start">
+												Untuk melihat isi variabel, kita dapat menggunakan fungsi print.
+											</p>
+											<p></p>
+											<div class="badge bg-dark">
+												<h6><b class="text-primary">print</b> variabel_ku <br>
+													<b class="text-primary">print</b> variabel2</h6>
+											</div>
+											<p></p>
+											<p></p>
+											<h3>Tipe Data</h3>
+											<p class="text-start">
+												Cara mengisi nilai variabel ditentukan dengan jenis datanya, misalkan untuk tipe data teks (string) maka harus diapit dengan tanda petik ("..."). Sedangkan untuk angka (integer) dan boolean tidak perlu diapit dengan tanda petik.
+											</p>
+
+										</p>
+									</p>
+									<p class="text-start">
+										<a class="btn btn-success text-start" href="#">Prev</a>
+										<a class="btn btn-success text-start" href="{{ url_for('index') }}">Next</a>
+										<a class="btn btn-success text-start" href="#home">Home</a>
+									</p>
+									
+								</div>
+							</div>
+							<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active" data-bs-interval="3000">
+										<img src="{{url_for('static', filename='lib/img/favicon.png')}}" class=" rounded mx-auto d-block w-70" alt="...">
+									</div>
+									<div class="carousel-item" data-bs-interval="3000">
+										<img src="{{url_for('static', filename='lib/img/favicon.png')}}" class="rounded mx-auto d-block w-70" alt="...">
+									</div>
+									<div class="carousel-item" data-bs-interval="3000">
+										<img src="{{url_for('static', filename='lib/img/favicon.png')}}" class="rounded mx-auto d-block w-70" alt="...">
+									</div>
+								</div>
+								<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end isi content -->
+				<!-- end content -->
+				<div class="col-md-1">
+					<!--  -->
+				</div>	
+					
+			</div>
+		</div>
+
+		{% endblock %}

@@ -1,0 +1,149 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+
+	<!-- modal About -->
+	<div class="modal fade" id="About" tabindex="-1" aria-labelledby="AboutLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content text-light bg-secondary">
+				<div class="modal-header">
+					<h5 class="modal-title" id="AboutLabel">About</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-4">
+							<img src="https://avatars.githubusercontent.com/u/73084755?v=4" class="rounded card-img-top" alt="...">
+						</div>
+						<div class="col-lg-8">
+							<a href="">
+								<i class="bi bi-arrow-right-square-fill"></i>
+								<strong>Nama: </strong>
+								<span>Mohamad Burhanudin</span><br>
+							</a>
+							<a href="">
+								<i class="bi bi-arrow-right-square-fill"></i>
+								<strong>NIM: </strong>
+								<span>202103034</span><br>
+							</a><br>
+							<strong>Tujuan </strong><span>dari pembuatan website ini adalah untuk memenuhi <strong>Tugas Akhir PAWL</strong> yang diampu oleh <strong>Pak Kharisma S.T., M.Cs.</strong></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal About -->
+	<!-- modal contact -->
+	<div class="modal fade" id="Contact" tabindex="-1" aria-labelledby="ContactLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content bg-secondary text-light">
+				<div class="modal-header bg-success text-light">
+					<h5 class="modal-title" id="ContactLabel">Contact Me</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-4">
+							<img src="https://avatars.githubusercontent.com/u/73084755?v=4" class="rounded-circle card-img-top" alt="...">
+						</div>
+						<div class="col-lg-8">
+							<a href="">
+								<i class="bi bi-whatsapp"></i>
+								<strong><a href="https://wa.me/6285287487322">085287487322</a></strong>
+							</a><br>
+							<a href="">
+								<i class="bi bi-github"></i>
+								<strong><a href="https://github.com/mohamadburhan151">mohamadburhan151</a></strong>
+							</a><br>
+							<a href="">
+								<i class="bi bi-instagram"></i>
+								<strong><a href="https://www.instagram.com/_mohamad_burhanudin_/">_mohamad_burhanudin_</a></strong>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include "base/header.html" %}
+
+  <!-- modal aksi -->
+  <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content bg-secondary text-light">
+				<div class="modal-header bg-primary text-light">
+					<h5 class="modal-title" id="ModalLabel">Tambah Gambar</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row justify-content-center">
+						<div class="col-sm-6">
+							<form id="formUser" method="post" action="{{url_for('tblLP')}}" enctype="multipart/form-data" accept-charset="utf-8">
+                <div class="mb-3">
+                  <label for="judul" class="form-label">Judul</label>
+                  <input type="text" class="form-control" id="judul" name="judul">
+                </div>
+                <div class="mb-3">
+                  <label for="deskripsi" class="form-label">Deskripsi</label>
+                  <input type="text" class="form-control" id="deskripsi" name="deskripsi">
+                </div>
+                <div class="mb-3">
+                  <label for="gambar" class="form-label">Gambar</label>
+                  <input type="file" class="form-control" id="gambar" name="gambar" accept="image/png, image/gif, image/jpeg">
+                </div>
+                  <input type="hidden" name="aksi" id="aksi" value="tambah">
+                </div>
+                  <input type="submit" value="upload">
+              </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="px-2 bg-transparent"><marquee class="py-3"><h1>Selamat datang <a class="active" href="">{{username}}</a></h1></marquee></div>
+	
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<h3 class="text-center">Daftar Gambar di Tabel Landing Page</h3>
+        <br>
+        <span>
+          <button data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-outline-secondary"><i class="bi bi-plus-square-fill"></i> Tambah Gambar</button>
+        </span>
+        <p></p>
+				<div class="table-responsive">
+					<table class="table table-bordered border-info">
+						<thead class="">
+							<tr>
+								<th>Id Gambar</th>
+								<th>Judul</th>
+								<th>Deskripsi</th>
+								<th>Gambar</th>
+                <th>Aksi</th>
+							</tr>
+						</thead>
+						<tbody>
+              {% for isi in data %}
+							<tr>
+								<td>{{isi[0]}}</td>
+								<td>{{isi[1]}}</td>
+								<td>{{isi[2]}}</td>
+								<td>{{isi[3]}}</td>
+                <td>
+                  <a class="btn btn-outline-success" href="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" title="Edit"><i class="bi bi-pencil-square"></i></a> 
+                   
+                  <a class="btn btn-outline-danger" onclick="return confirm('Anda Yakin Hapus?')" href="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" title="Hapus"><i class="bi bi-trash"></i></a>
+                </td>
+							</tr>
+              {%endfor%}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

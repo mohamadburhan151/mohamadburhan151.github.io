@@ -1,0 +1,112 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+
+	<!-- modal About -->
+	<div class="modal fade" id="About" tabindex="-1" aria-labelledby="AboutLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content text-light bg-secondary">
+				<div class="modal-header">
+					<h5 class="modal-title" id="AboutLabel">About</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-4">
+							<img src="https://avatars.githubusercontent.com/u/73084755?v=4" class="rounded card-img-top" alt="...">
+						</div>
+						<div class="col-lg-8">
+							<a href="">
+								<i class="bi bi-arrow-right-square-fill"></i>
+								<strong>Nama: </strong>
+								<span>Mohamad Burhanudin</span><br>
+							</a>
+							<a href="">
+								<i class="bi bi-arrow-right-square-fill"></i>
+								<strong>NIM: </strong>
+								<span>202103034</span><br>
+							</a><br>
+							<strong>Tujuan </strong><span>dari pembuatan website ini adalah untuk memenuhi <strong>Tugas Akhir PAWL</strong> yang diampu oleh <strong>Pak Kharisma S.T., M.Cs.</strong></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal About -->
+	<!-- modal contact -->
+	<div class="modal fade" id="Contact" tabindex="-1" aria-labelledby="ContactLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content bg-secondary text-light">
+				<div class="modal-header bg-success text-light">
+					<h5 class="modal-title" id="ContactLabel">Contact Me</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-4">
+							<img src="https://avatars.githubusercontent.com/u/73084755?v=4" class="rounded-circle card-img-top" alt="...">
+						</div>
+						<div class="col-lg-8">
+							<a href="">
+								<i class="bi bi-whatsapp"></i>
+								<strong><a href="https://wa.me/6285287487322">085287487322</a></strong>
+							</a><br>
+							<a href="">
+								<i class="bi bi-github"></i>
+								<strong><a href="https://github.com/mohamadburhan151">mohamadburhan151</a></strong>
+							</a><br>
+							<a href="">
+								<i class="bi bi-instagram"></i>
+								<strong><a href="https://www.instagram.com/_mohamad_burhanudin_/">_mohamad_burhanudin_</a></strong>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include "base/header.html" %}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-sm-6">
+				<div class="card text-center">
+					<div class="card-header bg-success text-light">
+						Edit Data User
+					</div>
+					<div class="card-body">
+						{%for d in dt %}
+						<form class="" id="formEdit" method="post" action="{{url_for('tblUser')}}">
+							<div class="mb-3">
+								<label for="nama" class="form-label">nama</label>
+								<input type="text" class="form-control text-center" id="nama" name="nama" value="{{d[1]}}">
+							</div>
+							<div class="mb-3">
+								<label for="username" class="form-label">username</label>
+								<input type="text" class="form-control text-center" id="username" name="username" value="{{d[2]}}">
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input type="text" class="form-control text-center" id="password" name="password" value="{{d[4]}}">
+							</div>
+							<div class="mb-3">
+								<label for="level" class="form-label">Level User</label>
+								<select class="form-select text-center" id="level" name="level" aria-label="Default select example">
+									<option value="{{d[5]}}" selected>{{d[5]}}</option>
+									<option value="admin">Admin</option>
+									<option value="user">User</option>
+								</select>
+								<input type="hidden" name="aksi" id="aksi" value="edit">
+								<input type="hidden" name="id" id="id" value="{{d[0]}}">
+							</div>
+							<button type="submit"  onclick="return confirm('Apakah Anda Yakin Edit?')" class="btn btn-primary">Edit</button>
+						</form>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
