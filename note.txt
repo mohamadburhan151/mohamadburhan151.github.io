@@ -1,0 +1,2 @@
+ext php 1.13
+composer phpmongodb 1.12.0
